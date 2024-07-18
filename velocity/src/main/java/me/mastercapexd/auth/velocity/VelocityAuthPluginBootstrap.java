@@ -5,6 +5,8 @@ import java.nio.file.Path;
 import java.util.Collection;
 import java.util.Collections;
 
+import com.bivashy.auth.api.hook.ConnectorPluginHook;
+import me.mastercapexd.auth.velocity.hooks.connector.VelocityConnectorPluginHook;
 import org.slf4j.Logger;
 
 import com.alessiodp.libby.VelocityLibraryManager;
@@ -66,6 +68,7 @@ public class VelocityAuthPluginBootstrap {
         initializeListener();
         initializeCommand();
         initializeLimbo();
+        initializeConnectorPlugin();
         if (authPlugin.getConfig().getVKSettings().isEnabled())
             initializeVk();
     }
@@ -92,6 +95,10 @@ public class VelocityAuthPluginBootstrap {
         limboPluginHooks.stream()
                 .filter(LimboPluginHook::canHook)
                 .forEach(limboPluginHook -> authPlugin.putHook(LimboPluginHook.class, limboPluginHook));
+    }
+
+    private void initializeConnectorPlugin() {
+        authPlugin.putHook(ConnectorPluginHook.class, new VelocityConnectorPluginHook(proxyServer));
     }
 
     public ProxyServer getProxyServer() {
