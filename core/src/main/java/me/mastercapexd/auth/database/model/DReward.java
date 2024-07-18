@@ -18,6 +18,9 @@ public class DReward implements Reward {
     @DatabaseField(columnName = CREATION_TIMESTAMP_FIELD_KEY)
     private long creationTimestamp;
 
+    DReward() {
+    }
+
     public DReward(AuthAccount account) {
         this.account = account;
         this.creationTimestamp = System.currentTimeMillis();
