@@ -12,6 +12,7 @@ import com.bivashy.auth.api.bucket.LinkAuthenticationBucket;
 import com.bivashy.auth.api.bucket.LinkConfirmationBucket;
 import com.bivashy.auth.api.config.PluginConfig;
 import com.bivashy.auth.api.database.AccountDatabase;
+import com.bivashy.auth.api.database.RewardDatabase;
 import com.bivashy.auth.api.hook.PluginHook;
 import com.bivashy.auth.api.link.user.entry.LinkEntryUser;
 import com.bivashy.auth.api.management.LibraryManagement;
@@ -39,6 +40,8 @@ public interface AuthPlugin extends Castable<AuthPlugin> {
     AccountFactory getAccountFactory();
 
     AccountDatabase getAccountDatabase();
+
+    RewardDatabase getRewardDatabase();
 
     GoogleAuthenticator getGoogleAuthenticator();
 
@@ -81,4 +84,5 @@ public interface AuthPlugin extends Castable<AuthPlugin> {
      * @return Plugin folder.
      */
     File getFolder();
+
 }
