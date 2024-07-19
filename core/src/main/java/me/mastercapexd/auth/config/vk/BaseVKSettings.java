@@ -11,6 +11,7 @@ import com.bivashy.auth.api.config.link.command.LinkCustomCommands;
 import com.bivashy.auth.api.config.link.stage.LinkConfirmationSettings;
 import com.bivashy.auth.api.config.link.stage.LinkEnterSettings;
 import com.bivashy.auth.api.config.link.stage.LinkRestoreSettings;
+import com.bivashy.auth.api.config.reward.RewardSettings;
 import com.bivashy.auth.api.link.user.info.LinkUserIdentificator;
 import com.bivashy.auth.api.link.user.info.impl.UserNumberIdentificator;
 import com.bivashy.auth.api.type.LinkConfirmationType;
@@ -25,12 +26,15 @@ import me.mastercapexd.auth.config.link.BaseMessengerCustomCommands;
 import me.mastercapexd.auth.config.link.BaseRestoreSettings;
 import me.mastercapexd.auth.config.message.link.LinkMessages;
 import me.mastercapexd.auth.config.message.vk.VKMessages;
+import me.mastercapexd.auth.config.reward.BaseRewardSettings;
 
 public class BaseVKSettings implements ConfigurationHolder, VKSettings {
     @ConfigField("enabled")
     private boolean enabled = false;
     @ConfigField("confirmation")
     private BaseConfirmationSettings confirmationSettings;
+    @ConfigField("reward")
+    private BaseRewardSettings rewardSettings;
     @ConfigField("restore")
     private BaseRestoreSettings restoreSettings;
     @ConfigField("enter")
@@ -71,6 +75,11 @@ public class BaseVKSettings implements ConfigurationHolder, VKSettings {
     @Override
     public LinkConfirmationSettings getConfirmationSettings() {
         return confirmationSettings;
+    }
+
+    @Override
+    public RewardSettings getRewardSettings() {
+        return rewardSettings;
     }
 
     @Override

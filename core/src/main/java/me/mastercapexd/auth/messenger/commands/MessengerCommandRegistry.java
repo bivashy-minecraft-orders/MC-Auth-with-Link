@@ -7,7 +7,7 @@ import com.bivashy.auth.api.account.Account;
 import com.bivashy.auth.api.bucket.LinkConfirmationBucket;
 import com.bivashy.auth.api.config.PluginConfig;
 import com.bivashy.auth.api.database.AccountDatabase;
-import com.bivashy.auth.api.database.RewardDatabase;
+import com.bivashy.auth.api.hook.ConnectorPluginHook;
 import com.bivashy.auth.api.link.LinkType;
 import com.bivashy.auth.api.link.user.LinkUser;
 import com.bivashy.auth.api.link.user.confirmation.LinkConfirmationUser;
@@ -127,7 +127,7 @@ public abstract class MessengerCommandRegistry {
         commandHandler.registerDependency(PluginConfig.class, PLUGIN.getConfig());
         commandHandler.registerDependency(AuthPlugin.class, PLUGIN);
         commandHandler.registerDependency(LinkType.class, linkType);
-        commandHandler.registerDependency(RewardDatabase.class, PLUGIN.getRewardDatabase());
+        commandHandler.registerDependency(ConnectorPluginHook.class, PLUGIN.getHook(ConnectorPluginHook.class));
     }
 
     protected void registerCommands() {

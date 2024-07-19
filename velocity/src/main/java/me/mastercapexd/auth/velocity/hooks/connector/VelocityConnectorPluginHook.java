@@ -20,10 +20,10 @@ public class VelocityConnectorPluginHook implements ConnectorPluginHook {
     }
 
     @Override
-    public void executeConsoleCommand(com.bivashy.auth.api.server.proxy.ProxyServer server, String command) {
+    public void executeConsoleCommand(String serverName, String command) {
         if (provider == null)
             throw new IllegalStateException("ConnectorPlugin is missing!");
-        provider.executeConsoleCommand(server, command);
+        provider.executeConsoleCommand(serverName, command);
     }
 
     @Override

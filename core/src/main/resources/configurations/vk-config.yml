@@ -65,8 +65,15 @@ vk:
     link-game: # Указывайте команды БЕЗ знака '/'
       main-command: 'addvk'
 
+reward:
+  execute-server: GAME-1
+  commands:
+    - 'w %name% test'
+
   # Команды которые в ВК
   vk-commands: # Основные команды
+    reward:
+      main-command: '/reward'
     link-game:
       main-command: '/addvk'
     enter-accept: # Id команды, не менять!
@@ -142,7 +149,8 @@ vk:
         /админ-панель,/админпанель,/админ,/панель,/admin-panel,/adminpanel,/admin,/panel -> Можно контролировать привязанные, не привязанные аккаунты
     command:
       #Если игрок ввел неизвестную команду то ему напишет то что команда не найдена
-      regex: '^/(?!.*(помощь|принять|accept|отклонить|decline|отвязать|unlink|аккаунты|accounts|контроль|control|account-control|аккаунт-контроль|кик|kick|восстановить|restore|подтверждение|entertoggle|гугл|google|гуглкод|googlecode|гуглотвязать|googleunlink|пароль|password|код|code|админ-панель|админпанель|админ|панель|admin-panel|adminpanel|admin|panel)).*$'
+      regex: '^/(?!.*(помощь|reward|принять|accept|отклонить|decline|отвязать|unlink|аккаунты|accounts|контроль|control|account-control|аккаунт-контроль|кик|kick|восстановить|restore|подтверждение|entertoggle|гугл|google
+      |гуглкод|googlecode|гуглотвязать|googleunlink|пароль|password|код|code|админ-панель|админпанель|админ|панель|admin-panel|adminpanel|admin|panel)).*$'
       answer: 'Команда не найдена! Доступные команды: /помощь'
       button-ignore: true
   keyboards: # Для создания JSON клавиатур советую использовать https://severecloud.github.io/vk-keyboard/. Учтывайте что полезная нагрузка должна иметь плейсхолдеры
@@ -365,6 +373,9 @@ vk:
     google-unlink-not-enough-arguments: 'Недостаточно аргументов! Правильный ввод: /гуглотвязать [ник]'
     google-unlink-not-have-google: 'Ошибка! У аккаунта нету гугл ключа'
     google-unlinked: 'Гугл успешно сброшен!'
+    # /tokens
+    reward-already-given: 'Приз уже выдан!'
+    reward-given: 'Приз успешно выдан.'
 
     command-cooldown: 'Вы слишком часто используете данную команду! Попробуйте позже.'
 

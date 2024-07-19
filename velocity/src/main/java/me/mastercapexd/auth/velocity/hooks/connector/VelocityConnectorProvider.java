@@ -12,8 +12,8 @@ public class VelocityConnectorProvider {
         this.connectorPlugin = (VelocityConnectorPlugin) pluginContainer.getInstance().orElseThrow();
     }
 
-    public void executeConsoleCommand(ProxyServer server, String command) {
-        connectorPlugin.getBridge().runServerConsoleCommand(server.getServerName(), command);
+    public void executeConsoleCommand(String serverName, String command) {
+        connectorPlugin.getBridge().runServerConsoleCommand(serverName, command);
     }
 
 }
