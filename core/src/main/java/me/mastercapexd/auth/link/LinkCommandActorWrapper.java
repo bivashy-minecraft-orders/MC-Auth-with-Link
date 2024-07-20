@@ -11,6 +11,8 @@ public interface LinkCommandActorWrapper extends CommandActor, MessageableComman
 
     LinkUserIdentificator userId();
 
+    void deleteTriggerMessage();
+
     @Override
     default void replyWithMessage(Object message) {
         if (message instanceof String)
