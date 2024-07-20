@@ -85,6 +85,8 @@ vk:
       main-command: '/отвязать'
       aliases:
         - '/unlink'
+    accounts-raw:
+      main-command: '/list'
     accounts:
       main-command: '/аккаунты'
       aliases:
@@ -142,7 +144,8 @@ vk:
         /админ-панель,/админпанель,/админ,/панель,/admin-panel,/adminpanel,/admin,/panel -> Можно контролировать привязанные, не привязанные аккаунты
     command:
       #Если игрок ввел неизвестную команду то ему напишет то что команда не найдена
-      regex: '^/(?!.*(помощь|принять|accept|отклонить|decline|отвязать|unlink|аккаунты|accounts|контроль|control|account-control|аккаунт-контроль|кик|kick|восстановить|restore|подтверждение|entertoggle|гугл|google|гуглкод|googlecode|гуглотвязать|googleunlink|пароль|password|код|code|админ-панель|админпанель|админ|панель|admin-panel|adminpanel|admin|panel)).*$'
+      regex: '^/(?!.*(помощь|list|принять|accept|отклонить|decline|отвязать|unlink|аккаунты|accounts|контроль|control|account-control|аккаунт-контроль|кик|kick|восстановить|restore|подтверждение|entertoggle|гугл|google
+      |гуглкод|googlecode|гуглотвязать|googleunlink|пароль|password|код|code|админ-панель|админпанель|админ|панель|admin-panel|adminpanel|admin|panel)).*$'
       answer: 'Команда не найдена! Доступные команды: /помощь'
       button-ignore: true
   keyboards: # Для создания JSON клавиатур советую использовать https://severecloud.github.io/vk-keyboard/. Учтывайте что полезная нагрузка должна иметь плейсхолдеры
@@ -315,6 +318,7 @@ vk:
     no-accounts: 'У тебя нету аккаунтов'
     no-page-accounts: 'В данной странице отсутсвуют аккаунты!'
     accounts: 'Твои аккаунты:'
+    raw-accounts: 'Привязанные аккаунты: %accounts%'
     # Настройка аккаунта
     account-control: 'Настройка аккаунта: %name%'
     # Восстановление аккаунта
