@@ -139,6 +139,7 @@ public abstract class MessengerCommandRegistry {
         registerCommand(linkPath(LinkWithPasswordCommand.CONFIGURATION_KEY), new LinkWithPasswordCommand());
         registerCommand(linkPath(ConfirmationToggleCommand.CONFIGURATION_KEY), new ConfirmationToggleCommand());
         registerCommand(linkPath(AccountsListCommand.CONFIGURATION_KEY), new AccountsListCommand());
+        registerCommand(linkPath(AccountsRawListCommand.CONFIGURATION_KEY), new AccountsRawListCommand());
         registerCommand(linkPath(AccountCommand.CONFIGURATION_KEY), new AccountCommand());
         registerCommand(linkPath(AccountEnterAcceptCommand.CONFIGURATION_KEY), new AccountEnterAcceptCommand());
         registerCommand(linkPath(AccountEnterDeclineCommand.CONFIGURATION_KEY), new AccountEnterDeclineCommand());
