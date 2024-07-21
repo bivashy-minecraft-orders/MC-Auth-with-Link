@@ -28,6 +28,7 @@ import com.bivashy.auth.api.config.duration.ConfigurationDuration;
 import com.bivashy.auth.api.config.server.ConfigurationServer;
 import com.bivashy.auth.api.crypto.CryptoProvider;
 import com.bivashy.auth.api.database.AccountDatabase;
+import com.bivashy.auth.api.database.RewardDatabase;
 import com.bivashy.auth.api.hook.PluginHook;
 import com.bivashy.auth.api.link.user.entry.LinkEntryUser;
 import com.bivashy.auth.api.management.LibraryManagement;
@@ -118,6 +119,7 @@ public class BaseAuthPlugin implements AuthPlugin {
     private PluginConfig config;
     private AccountFactory accountFactory;
     private LinkTypeProvider linkTypeProvider;
+    private DatabaseHelper databaseHelper;
     private AccountDatabase accountDatabase;
     private LoginManagement loginManagement;
 
@@ -157,7 +159,8 @@ public class BaseAuthPlugin implements AuthPlugin {
         this.accountFactory = new AuthAccountFactory();
         this.linkTypeProvider = BaseLinkTypeProvider.allLinks();
         // TODO: Replace this with IsolatedDatabaseHelperFactory
-        this.accountDatabase = new AuthAccountDatabaseProxy(new DatabaseHelper(this, new IsolatedClassLoader()));
+        this.databaseHelper = new DatabaseHelper(this, new IsolatedClassLoader());
+        this.accountDatabase = new AuthAccountDatabaseProxy(databaseHelper);
         this.loginManagement = new BaseLoginManagement(this);
 
         this.registerAuthenticationSteps();
@@ -290,6 +293,11 @@ public class BaseAuthPlugin implements AuthPlugin {
     @Override
     public AccountDatabase getAccountDatabase() {
         return accountDatabase;
+    }
+
+    @Override
+    public RewardDatabase getRewardDatabase() {
+        return databaseHelper.getRewardDatabase();
     }
 
     @Override

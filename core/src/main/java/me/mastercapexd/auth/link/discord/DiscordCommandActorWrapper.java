@@ -92,6 +92,11 @@ public class DiscordCommandActorWrapper extends LinkCommandActorWrapperTemplate<
     }
 
     @Override
+    public void deleteTriggerMessage() {
+        throw new UnsupportedOperationException();
+    }
+
+    @Override
     public LinkUserIdentificator userId() {
         return new UserNumberIdentificator(getIdLong());
     }

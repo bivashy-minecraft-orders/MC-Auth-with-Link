@@ -12,6 +12,7 @@ import java.util.function.Consumer;
 import com.bivashy.auth.api.AuthPlugin;
 import com.bivashy.auth.api.config.database.DatabaseSettings;
 import com.bivashy.auth.api.config.database.schema.SchemaSettings;
+import com.bivashy.auth.api.database.RewardDatabase;
 import com.j256.ormlite.db.DatabaseType;
 import com.j256.ormlite.field.DataPersisterManager;
 import com.j256.ormlite.jdbc.JdbcPooledConnectionSource;
@@ -24,6 +25,7 @@ import com.j256.ormlite.support.ConnectionSource;
 import me.mastercapexd.auth.config.storage.schema.BaseTableSettings;
 import me.mastercapexd.auth.database.dao.AccountLinkDao;
 import me.mastercapexd.auth.database.dao.AuthAccountDao;
+import me.mastercapexd.auth.database.dao.RewardDao;
 import me.mastercapexd.auth.database.migration.MigrationCoordinator;
 import me.mastercapexd.auth.database.migration.Migrations;
 import me.mastercapexd.auth.database.model.AccountLink;
@@ -42,6 +44,8 @@ public class DatabaseHelper {
     private ConnectionSource connectionSource;
     private AuthAccountDao authAccountDao;
     private AccountLinkDao accountLinkDao;
+    private RewardDao rewardDao;
+    private RewardDatabase rewardDatabase;
 
     public DatabaseHelper(AuthPlugin plugin, ClassLoader classLoader) {
         DatabaseSettings databaseConfiguration = plugin.getConfig().getDatabaseConfiguration();
@@ -73,6 +77,8 @@ public class DatabaseHelper {
                         schemaSettings.getTableSettings("link").orElse(new BaseTableSettings("auth_links")), this);
                 this.authAccountDao = new AuthAccountDao(connectionSource,
                         schemaSettings.getTableSettings("auth").orElse(new BaseTableSettings("mc_auth_accounts")), this);
+                this.rewardDao = new RewardDao(connectionSource);
+                this.rewardDatabase = new RewardDatabaseProxy(rewardDao);
 
                 authAccountMigrationCoordinator.add(Migrations.HASH_ITERATION_COLUMN_MIGRATOR);
                 authAccountMigrationCoordinator.add(Migrations.LEGACY_MC_AUTH_TO_NEW_MIGRATOR);
@@ -123,6 +129,14 @@ public class DatabaseHelper {
 
     public AccountLinkDao getAccountLinkDao() {
         return accountLinkDao;
+    }
+
+    public RewardDao getRewardDao() {
+        return rewardDao;
+    }
+
+    public RewardDatabase getRewardDatabase() {
+        return rewardDatabase;
     }
 
 }
