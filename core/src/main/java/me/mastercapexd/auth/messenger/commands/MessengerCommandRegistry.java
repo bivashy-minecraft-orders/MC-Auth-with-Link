@@ -134,6 +134,7 @@ public abstract class MessengerCommandRegistry {
         if (confirmationTypeEnabled(LinkConfirmationType.FROM_GAME))
             registerCommand(linkPath(MessengerLinkCommandTemplate.CONFIGURATION_KEY), createLinkCommand());
 
+        registerCommand(linkPath(LinkWithPasswordCommand.CONFIGURATION_KEY), new LinkWithPasswordCommand());
         registerCommand(linkPath(ConfirmationToggleCommand.CONFIGURATION_KEY), new ConfirmationToggleCommand());
         registerCommand(linkPath(AccountsListCommand.CONFIGURATION_KEY), new AccountsListCommand());
         registerCommand(linkPath(AccountCommand.CONFIGURATION_KEY), new AccountCommand());

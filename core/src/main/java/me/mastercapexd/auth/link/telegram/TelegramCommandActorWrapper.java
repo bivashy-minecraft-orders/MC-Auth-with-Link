@@ -7,10 +7,10 @@ import com.bivashy.lamp.telegram.dispatch.DispatchSource;
 import com.bivashy.messenger.common.identificator.Identificator;
 import com.bivashy.messenger.common.message.Message;
 import com.bivashy.messenger.telegram.message.TelegramMessage;
-
 import me.mastercapexd.auth.link.LinkCommandActorWrapperTemplate;
 
 public class TelegramCommandActorWrapper extends LinkCommandActorWrapperTemplate<TelegramActor> implements TelegramActor {
+
     public TelegramCommandActorWrapper(TelegramActor actor) {
         super(actor);
     }
@@ -38,4 +38,10 @@ public class TelegramCommandActorWrapper extends LinkCommandActorWrapperTemplate
     public DispatchSource getDispatchSource() {
         return actor.getDispatchSource();
     }
+
+    @Override
+    public void deleteTriggerMessage() {
+        throw new UnsupportedOperationException();
+    }
+
 }
