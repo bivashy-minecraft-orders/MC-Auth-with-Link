@@ -25,6 +25,11 @@
             <id>bungeecord-repo</id>
             <url>https://oss.sonatype.org/content/repositories/snapshots</url>
         </repository>
+
+        <repository>
+            <id>minebench-repo</id>
+            <url>https://repo.minebench.de/</url>
+        </repository>
     </repositories>
 
     <dependencies>
@@ -78,6 +83,18 @@
         <dependency>
             <groupId>com.alessiodp.libby</groupId>
             <artifactId>libby-bungee</artifactId>
+        </dependency>
+
+        <!-- Connector Plugin -->
+        <dependency>
+            <groupId>de.themoep.connectorplugin</groupId>
+            <artifactId>bungee</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>de.themoep</groupId>
+            <artifactId>bungeeplugin</artifactId>
+            <scope>provided</scope>
         </dependency>
     </dependencies>
 

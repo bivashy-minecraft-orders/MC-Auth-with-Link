@@ -17,6 +17,10 @@
     {
       "id": "nanolimbovelocity",
       "optional": true
+    },
+    {
+      "id": "connectorplugin",
+      "optional": true
     }
   ],
   "main": "me.mastercapexd.auth.velocity.VelocityAuthPluginBootstrap"

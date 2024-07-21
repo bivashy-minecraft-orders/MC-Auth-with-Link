@@ -4,6 +4,7 @@ import java.util.Collection;
 import java.util.Collections;
 
 import com.alessiodp.libby.BungeeLibraryManager;
+import com.bivashy.auth.api.hook.ConnectorPluginHook;
 import com.bivashy.auth.api.hook.LimboPluginHook;
 import com.bivashy.messenger.vk.message.VkMessage;
 import com.bivashy.messenger.vk.provider.VkApiProvider;
@@ -12,6 +13,7 @@ import com.ubivashka.vk.bungee.BungeeVkApiPlugin;
 import me.mastercapexd.auth.BaseAuthPlugin;
 import me.mastercapexd.auth.bungee.commands.BungeeCommandsRegistry;
 import me.mastercapexd.auth.bungee.hooks.BungeeVkPluginHook;
+import me.mastercapexd.auth.bungee.hooks.connector.BungeeConnectorPluginHook;
 import me.mastercapexd.auth.bungee.hooks.nanolimbo.BungeeNanoLimboPluginHook;
 import me.mastercapexd.auth.bungee.listener.AuthenticationListener;
 import me.mastercapexd.auth.bungee.listener.VkDispatchListener;
@@ -42,6 +44,7 @@ public class BungeeAuthPluginBootstrap extends Plugin {
         initializeListener();
         initializeCommand();
         initializeLimbo();
+        initializeConnectorPlugin();
         if (authPlugin.getConfig().getVKSettings().isEnabled())
             initializeVk();
     }
@@ -65,6 +68,10 @@ public class BungeeAuthPluginBootstrap extends Plugin {
         limboPluginHooks.stream()
                 .filter(LimboPluginHook::canHook)
                 .forEach(limboPluginHook -> authPlugin.putHook(LimboPluginHook.class, limboPluginHook));
+    }
+
+    private void initializeConnectorPlugin() {
+        authPlugin.putHook(ConnectorPluginHook.class, new BungeeConnectorPluginHook());
     }
 
     private void initializeVk() {

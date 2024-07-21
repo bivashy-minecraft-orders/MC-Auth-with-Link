@@ -7,6 +7,7 @@ import com.bivashy.auth.api.account.Account;
 import com.bivashy.auth.api.bucket.LinkConfirmationBucket;
 import com.bivashy.auth.api.config.PluginConfig;
 import com.bivashy.auth.api.database.AccountDatabase;
+import com.bivashy.auth.api.hook.ConnectorPluginHook;
 import com.bivashy.auth.api.link.LinkType;
 import com.bivashy.auth.api.link.user.LinkUser;
 import com.bivashy.auth.api.link.user.confirmation.LinkConfirmationUser;
@@ -126,6 +127,7 @@ public abstract class MessengerCommandRegistry {
         commandHandler.registerDependency(PluginConfig.class, PLUGIN.getConfig());
         commandHandler.registerDependency(AuthPlugin.class, PLUGIN);
         commandHandler.registerDependency(LinkType.class, linkType);
+        commandHandler.registerDependency(ConnectorPluginHook.class, PLUGIN.getHook(ConnectorPluginHook.class));
     }
 
     protected void registerCommands() {
@@ -148,6 +150,8 @@ public abstract class MessengerCommandRegistry {
         registerCommand(linkPath(GoogleCommand.CONFIGURATION_KEY), new GoogleCommand());
         registerCommand(linkPath(GoogleCodeCommand.CONFIGURATION_KEY), new GoogleCodeCommand());
         registerCommand(linkPath(AdminPanelCommand.CONFIGURATION_KEY), new AdminPanelCommand());
+
+        registerCommand(linkPath(RewardCommand.CONFIGURATION_KEY), new RewardCommand());
     }
 
     private void registerCommand(Orphans path, OrphanCommand commandInstance) {
