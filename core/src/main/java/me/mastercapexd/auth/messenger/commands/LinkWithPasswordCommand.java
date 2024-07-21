@@ -29,6 +29,7 @@ public class LinkWithPasswordCommand implements OrphanCommand {
     @CommandCooldown(value = 5, unit = TimeUnit.SECONDS)
     public void onLink(LinkCommandActorWrapper actorWrapper, LinkType linkType, String playerName, String password) {
         Messages<String> linkMessages = linkType.getSettings().getMessages();
+        actorWrapper.deleteTriggerMessage();
         accountDatabase.getAccountFromName(playerName).whenComplete(((account, throwable) -> {
             if (account == null || !account.isRegistered()) {
                 actorWrapper.reply(linkMessages.getMessage("account-not-found"));
