@@ -9,7 +9,7 @@ import com.bivashy.auth.api.config.link.command.LinkCommandPathSettings;
 import me.mastercapexd.auth.config.discord.DiscordCommandArgumentSettings;
 import me.mastercapexd.auth.config.discord.DiscordCommandSettings;
 import me.mastercapexd.auth.link.discord.DiscordLinkType;
-import me.mastercapexd.auth.messenger.commands.annotation.CommandKey;
+import me.mastercapexd.auth.shared.commands.annotation.CommandKey;
 import net.dv8tion.jda.api.interactions.commands.build.OptionData;
 import revxrsal.commands.command.CommandParameter;
 import revxrsal.commands.command.ExecutableCommand;

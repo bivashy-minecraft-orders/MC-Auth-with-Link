@@ -21,7 +21,7 @@ import com.google.zxing.common.BitMatrix;
 
 import me.mastercapexd.auth.link.LinkCommandActorWrapper;
 import me.mastercapexd.auth.link.google.GoogleLinkType;
-import me.mastercapexd.auth.messenger.commands.annotation.CommandKey;
+import me.mastercapexd.auth.shared.commands.annotation.CommandKey;
 import me.mastercapexd.auth.messenger.commands.annotation.ConfigurationArgumentError;
 import me.mastercapexd.auth.server.commands.annotations.GoogleUse;
 import me.mastercapexd.auth.shared.commands.annotation.CommandCooldown;

@@ -8,7 +8,7 @@ import com.bivashy.auth.api.link.user.LinkUser;
 
 import io.github.revxrsal.eventbus.EventBus;
 import me.mastercapexd.auth.link.LinkCommandActorWrapper;
-import me.mastercapexd.auth.messenger.commands.annotation.CommandKey;
+import me.mastercapexd.auth.shared.commands.annotation.CommandKey;
 import me.mastercapexd.auth.messenger.commands.annotation.ConfigurationArgumentError;
 import revxrsal.commands.annotation.DefaultFor;
 import revxrsal.commands.annotation.Dependency;

@@ -7,7 +7,7 @@ import com.bivashy.auth.api.database.AccountDatabase;
 import com.bivashy.auth.api.link.LinkType;
 
 import me.mastercapexd.auth.link.LinkCommandActorWrapper;
-import me.mastercapexd.auth.messenger.commands.annotation.CommandKey;
+import me.mastercapexd.auth.shared.commands.annotation.CommandKey;
 import me.mastercapexd.auth.messenger.commands.annotation.ConfigurationArgumentError;
 import me.mastercapexd.auth.shared.commands.annotation.CommandCooldown;
 import revxrsal.commands.annotation.DefaultFor;

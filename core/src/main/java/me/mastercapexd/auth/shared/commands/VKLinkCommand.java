@@ -15,7 +15,7 @@ import com.vk.api.sdk.objects.users.responses.GetResponse;
 import me.mastercapexd.auth.hooks.VkPluginHook;
 import me.mastercapexd.auth.link.user.confirmation.BaseLinkConfirmationUser;
 import me.mastercapexd.auth.link.vk.VKLinkType;
-import me.mastercapexd.auth.messenger.commands.annotation.CommandKey;
+import me.mastercapexd.auth.shared.commands.annotation.CommandKey;
 import me.mastercapexd.auth.server.commands.annotations.VkUse;
 import me.mastercapexd.auth.shared.commands.annotation.CommandCooldown;
 import revxrsal.commands.annotation.DefaultFor;

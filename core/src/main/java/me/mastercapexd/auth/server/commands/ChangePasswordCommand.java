@@ -14,7 +14,7 @@ import revxrsal.commands.annotation.Command;
 import revxrsal.commands.annotation.DefaultFor;
 import revxrsal.commands.annotation.Dependency;
 
-@Command({"passchange", "changepass", "changepassword"})
+@Command({"passchange", "changepass", "changepassword", "cp"})
 public class ChangePasswordCommand {
 
     @Dependency
@@ -24,7 +24,7 @@ public class ChangePasswordCommand {
     @Dependency
     private AccountDatabase accountStorage;
 
-    @DefaultFor({"passchange", "changepass", "changepassword"})
+    @DefaultFor({"passchange", "changepass", "changepassword", "cp"})
     @CommandCooldown(CommandCooldown.DEFAULT_VALUE)
     public void changePlayerPassword(ServerPlayer sender, DoublePassword password) {
         String id = config.getActiveIdentifierType().getId(sender);

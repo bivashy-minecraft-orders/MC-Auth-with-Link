@@ -8,7 +8,7 @@ import com.bivashy.auth.api.event.AccountTryChangePasswordEvent;
 import com.bivashy.auth.api.link.LinkType;
 
 import me.mastercapexd.auth.link.LinkCommandActorWrapper;
-import me.mastercapexd.auth.messenger.commands.annotation.CommandKey;
+import me.mastercapexd.auth.shared.commands.annotation.CommandKey;
 import me.mastercapexd.auth.messenger.commands.annotation.ConfigurationArgumentError;
 import me.mastercapexd.auth.server.commands.parameters.NewPassword;
 import me.mastercapexd.auth.shared.commands.annotation.CommandCooldown;

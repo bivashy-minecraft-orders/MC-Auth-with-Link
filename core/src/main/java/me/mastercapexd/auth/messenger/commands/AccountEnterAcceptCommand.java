@@ -12,7 +12,7 @@ import com.bivashy.auth.api.link.user.entry.LinkEntryUser;
 
 import io.github.revxrsal.eventbus.EventBus;
 import me.mastercapexd.auth.link.LinkCommandActorWrapper;
-import me.mastercapexd.auth.messenger.commands.annotation.CommandKey;
+import me.mastercapexd.auth.shared.commands.annotation.CommandKey;
 import revxrsal.commands.annotation.Default;
 import revxrsal.commands.annotation.DefaultFor;
 import revxrsal.commands.annotation.Dependency;

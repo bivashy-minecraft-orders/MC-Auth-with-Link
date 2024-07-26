@@ -11,7 +11,7 @@ import com.bivashy.auth.api.type.LinkConfirmationType;
 
 import me.mastercapexd.auth.link.telegram.TelegramLinkType;
 import me.mastercapexd.auth.link.user.confirmation.BaseLinkConfirmationUser;
-import me.mastercapexd.auth.messenger.commands.annotation.CommandKey;
+import me.mastercapexd.auth.shared.commands.annotation.CommandKey;
 import me.mastercapexd.auth.server.commands.annotations.TelegramUse;
 import me.mastercapexd.auth.shared.commands.annotation.CommandCooldown;
 import revxrsal.commands.annotation.DefaultFor;

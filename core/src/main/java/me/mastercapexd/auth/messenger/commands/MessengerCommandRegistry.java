@@ -1,11 +1,13 @@
 package me.mastercapexd.auth.messenger.commands;
 
+import java.util.Arrays;
 import java.util.Optional;
 
 import com.bivashy.auth.api.AuthPlugin;
 import com.bivashy.auth.api.account.Account;
 import com.bivashy.auth.api.bucket.LinkConfirmationBucket;
 import com.bivashy.auth.api.config.PluginConfig;
+import com.bivashy.auth.api.config.link.command.LinkCommandPathSettings;
 import com.bivashy.auth.api.database.AccountDatabase;
 import com.bivashy.auth.api.hook.ConnectorPluginHook;
 import com.bivashy.auth.api.link.LinkType;
@@ -132,43 +134,46 @@ public abstract class MessengerCommandRegistry {
 
     protected void registerCommands() {
         if (confirmationTypeEnabled(LinkConfirmationType.FROM_LINK))
-            registerCommand(linkPath(LinkCodeCommand.CONFIGURATION_KEY), new LinkCodeCommand());
+            registerCommand(LinkCodeCommand.CONFIGURATION_KEY, new LinkCodeCommand());
         if (confirmationTypeEnabled(LinkConfirmationType.FROM_GAME))
-            registerCommand(linkPath(MessengerLinkCommandTemplate.CONFIGURATION_KEY), createLinkCommand());
+            registerCommand(MessengerLinkCommandTemplate.CONFIGURATION_KEY, createLinkCommand());
 
-        registerCommand(linkPath(LinkWithPasswordCommand.CONFIGURATION_KEY), new LinkWithPasswordCommand());
-        registerCommand(linkPath(ConfirmationToggleCommand.CONFIGURATION_KEY), new ConfirmationToggleCommand());
-        registerCommand(linkPath(AccountsListCommand.CONFIGURATION_KEY), new AccountsListCommand());
-        registerCommand(linkPath(AccountsRawListCommand.CONFIGURATION_KEY), new AccountsRawListCommand());
-        registerCommand(linkPath(AccountCommand.CONFIGURATION_KEY), new AccountCommand());
-        registerCommand(linkPath(AccountEnterAcceptCommand.CONFIGURATION_KEY), new AccountEnterAcceptCommand());
-        registerCommand(linkPath(AccountEnterDeclineCommand.CONFIGURATION_KEY), new AccountEnterDeclineCommand());
-        registerCommand(linkPath(KickCommand.CONFIGURATION_KEY), new KickCommand());
-        registerCommand(linkPath(RestoreCommand.CONFIGURATION_KEY), new RestoreCommand());
-        registerCommand(linkPath(UnlinkCommand.CONFIGURATION_KEY), new UnlinkCommand());
-        registerCommand(linkPath(ChangePasswordCommand.CONFIGURATION_KEY), new ChangePasswordCommand());
-        registerCommand(linkPath(GoogleUnlinkCommand.CONFIGURATION_KEY), new GoogleUnlinkCommand());
-        registerCommand(linkPath(GoogleCommand.CONFIGURATION_KEY), new GoogleCommand());
-        registerCommand(linkPath(GoogleCodeCommand.CONFIGURATION_KEY), new GoogleCodeCommand());
-        registerCommand(linkPath(AdminPanelCommand.CONFIGURATION_KEY), new AdminPanelCommand());
+        registerCommand(LinkWithPasswordCommand.CONFIGURATION_KEY, new LinkWithPasswordCommand());
+        registerCommand(ConfirmationToggleCommand.CONFIGURATION_KEY, new ConfirmationToggleCommand());
+        registerCommand(AccountsListCommand.CONFIGURATION_KEY, new AccountsListCommand());
+        registerCommand(AccountsRawListCommand.CONFIGURATION_KEY, new AccountsRawListCommand());
+        registerCommand(AccountCommand.CONFIGURATION_KEY, new AccountCommand());
+        registerCommand(AccountEnterAcceptCommand.CONFIGURATION_KEY, new AccountEnterAcceptCommand());
+        registerCommand(AccountEnterDeclineCommand.CONFIGURATION_KEY, new AccountEnterDeclineCommand());
+        registerCommand(KickCommand.CONFIGURATION_KEY, new KickCommand());
+        registerCommand(RestoreCommand.CONFIGURATION_KEY, new RestoreCommand());
+        registerCommand(UnlinkCommand.CONFIGURATION_KEY, new UnlinkCommand());
+        registerCommand(ChangePasswordCommand.CONFIGURATION_KEY, new ChangePasswordCommand());
+        registerCommand(GoogleUnlinkCommand.CONFIGURATION_KEY, new GoogleUnlinkCommand());
+        registerCommand(GoogleCommand.CONFIGURATION_KEY, new GoogleCommand());
+        registerCommand(GoogleCodeCommand.CONFIGURATION_KEY, new GoogleCodeCommand());
+        registerCommand(AdminPanelCommand.CONFIGURATION_KEY, new AdminPanelCommand());
 
-        registerCommand(linkPath(RewardCommand.CONFIGURATION_KEY), new RewardCommand());
+        registerCommand(RewardCommand.CONFIGURATION_KEY, new RewardCommand());
     }
 
-    private void registerCommand(Orphans path, OrphanCommand commandInstance) {
-        commandHandler.register(path.handler(commandInstance));
+    private void registerCommand(String key, OrphanCommand commandInstance) {
+        String[] path = commandPath(key);
+        if (path.length == 0 || Arrays.stream(path).allMatch(String::isEmpty))
+            return;
+        Orphans orphans = Orphans.path(path);
+        commandHandler.register(orphans.handler(commandInstance));
     }
 
     private boolean confirmationTypeEnabled(LinkConfirmationType confirmationType) {
         return linkType.getSettings().getLinkConfirmationTypes().contains(confirmationType);
     }
 
-    private Orphans linkPath(String key) {
-        return Orphans.path(commandPath(key));
-    }
-
     private String[] commandPath(String key) {
-        return linkType.getSettings().getCommandPaths().getCommandPath(key).getCommandPaths();
+        LinkCommandPathSettings pathSettings = linkType.getSettings().getCommandPaths().getCommandPath(key);
+        if (pathSettings == null)
+            return new String[0];
+        return pathSettings.getCommandPaths();
     }
 
     public CommandHandler getCommandHandler() {

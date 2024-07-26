@@ -15,7 +15,7 @@ import com.bivashy.auth.api.type.LinkConfirmationType;
 import io.github.revxrsal.eventbus.EventBus;
 import me.mastercapexd.auth.config.message.context.account.BaseAccountPlaceholderContext;
 import me.mastercapexd.auth.link.LinkCommandActorWrapper;
-import me.mastercapexd.auth.messenger.commands.annotation.CommandKey;
+import me.mastercapexd.auth.shared.commands.annotation.CommandKey;
 import me.mastercapexd.auth.messenger.commands.annotation.ConfigurationArgumentError;
 import me.mastercapexd.auth.shared.commands.annotation.CommandCooldown;
 import me.mastercapexd.auth.shared.commands.parameter.MessengerLinkContext;
