@@ -8,13 +8,13 @@ import java.util.Optional;
 
 public class VelocityConnectorPluginHook implements ConnectorPluginHook {
 
-    private ProxyServer proxyServer;
+    private final ProxyServer proxyServer;
     private VelocityConnectorProvider provider;
 
     public VelocityConnectorPluginHook(ProxyServer proxyServer) {
+        this.proxyServer = proxyServer;
         if (!canHook())
             return;
-        this.proxyServer = proxyServer;
         PluginContainer pluginContainer = connectorPlugin().orElseThrow();
         this.provider = new VelocityConnectorProvider(pluginContainer);
     }
