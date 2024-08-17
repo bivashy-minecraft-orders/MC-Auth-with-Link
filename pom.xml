@@ -28,17 +28,17 @@
         <!-- Dependencies -->
         <!-- Crypto -->
         <jbcrypt.version>0.4</jbcrypt.version>
-        <password4j.version>1.7.3</password4j.version>
+        <password4j.version>1.8.2</password4j.version>
 
         <!-- TOTP -->
         <totp-auth.version>1.5.0</totp-auth.version>
         <zxing-qr-generator.version>3.5.3</zxing-qr-generator.version>
 
         <!-- Adventure -->
-        <minimessage.version>4.16.0</minimessage.version>
-        <adventure-serializer.version>4.16.0</adventure-serializer.version>
-        <adventure-platform.version>4.3.2</adventure-platform.version>
-        <adventure-bungee.version>4.3.3</adventure-bungee.version>
+        <minimessage.version>4.17.0</minimessage.version>
+        <adventure-serializer.version>4.17.0</adventure-serializer.version>
+        <adventure-platform.version>4.3.4</adventure-platform.version>
+        <adventure-bungee.version>4.3.4</adventure-bungee.version>
 
         <!-- Configuration -->
         <configuration-library.version>4.0.2</configuration-library.version>
@@ -69,9 +69,9 @@
         <nanolimbo.version>1.0.8</nanolimbo.version>
 
         <!-- Maven plugins -->
-        <maven.compiler.plugin.version>3.12.1</maven.compiler.plugin.version>
+        <maven.compiler.plugin.version>3.13.0</maven.compiler.plugin.version>
         <maven.shade.plugin.version>3.6.0</maven.shade.plugin.version>
-        <maven.source.plugin.version>3.3.0</maven.source.plugin.version>
+        <maven.source.plugin.version>3.3.1</maven.source.plugin.version>
     </properties>
 
     <dependencyManagement>
